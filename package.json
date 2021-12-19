@@ -3,24 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz",
     "axios": "^0.24.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.0",
-    "set-value": "4.1.0",
     "styled-components": "^5.3.3"
   },
   "resolutions": {
-    "ansi-regex": "6.0.1",
-    "nth-check": "2.0.1",
-    "set-value": "4.0.1",
-    "immer": "9.0.7",
-    "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz",
-    "glob-parent": "6.0.2",
-    "browserslist": "4.19.1",
-    "styled-components": "^5"
+    "nth-check": "2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +19,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "type": "module",
   "eslintConfig": {
     "extends": [
       "react-app"

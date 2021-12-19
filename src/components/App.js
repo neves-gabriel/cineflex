@@ -4,7 +4,7 @@ import Showtimes from "./pages/ShowtimesPage/Showtimes";
 import Seats from "./pages/SeatsPage/Seats";
 import Success from "./pages/SucessPage/Sucess";
 import { useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import styled from "styled-components";
 
 export default function App() {
@@ -17,20 +17,12 @@ export default function App() {
       <PageView>
 
         <BrowserRouter>
-          <Switch>
-            <Route path="/" exact>
-              <Movies />
-            </Route>
-            <Route path="/filme/:movieId" exact>
-              <Showtimes />
-            </Route>
-            <Route path="/sessao/:showtimeId" exact>
-              <Seats setReservation={setReservation}/>
-            </Route>
-            <Route path="/sucesso" exact>
-              <Success reservation={reservation} setReservation={setReservation}/>
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Movies />} exact />
+            <Route path="/filme/:movieId" element={<Showtimes />} exact />
+            <Route path="/sessao/:showtimeId" element={<Seats setReservation={setReservation}/>} exact />
+            <Route path="/sucesso" element={<Success reservation={reservation} setReservation={setReservation}/>} exact />
+          </Routes>
         </BrowserRouter>
         
       </PageView>
