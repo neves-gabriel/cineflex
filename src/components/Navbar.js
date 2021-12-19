@@ -27,7 +27,9 @@ const NavbarContainer = styled.div`
     color: #E8833A;
     font-size: 34px;
     text-transform: uppercase;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     img {
-        height:40px;
+        height:50px;
+        cursor: pointer;
     }
 `

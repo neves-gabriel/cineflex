@@ -1,34 +1,36 @@
+import Movie from "./Movie";
+import { getMovies } from "../../../services/cineflex";
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from "react-router-dom";
-
+import styled from "styled-components";
+import { PageTitle } from "../../shared/styledcomponents";
 
 export default function Movies() {
 
-    const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
 
-	useEffect(() => {
-		const requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies");
+  useEffect(() => {
+    getMovies()
+      .then(res => setMovies(res.data))
+  }, [])
 
-		requisicao.then(resposta => {
-			setMovies(resposta.data);
-		});
-	}, []);
-
-    console.log(movies);
-
-    return (
-        <div class="container">
-            <h2>Selecione o filme</h2>
-            <div class="posters">
-                    {movies.map(({posterURL, id})=> (posterURL ? (<>
-                        <Link to={`/filme/${id}`}>
-                            <img src={posterURL} alt="Movie Poster" />
-                        </Link> </>
-                    ) : (
-                        "Carregando Filmes"
-                    )))}   
-            </div>
-        </div>
-    )
+  return (
+    <>
+      <PageTitle>
+        Selecione o filme
+      </PageTitle>
+      <MovieList>
+        {
+          movies.map(m => (
+            <Movie key={m.id} movie={m} />
+          ))
+        }
+      </MovieList>
+    </>
+  );
 }
+
+const MovieList = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+`
