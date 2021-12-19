@@ -1,39 +1,48 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from "react-router-dom";
+import Day from "./Day";
+import Footer from "../../Footer";
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { getShowtimes  } from "../../../services/cineflex";
+import { PageTitle } from "../../shared/styledcomponents";
+import styled from "styled-components";
 
-export default function SessionList() {
-    const { idMovie } = useParams();
+export default function Showtimes() {
 
-    const [sessions, setSessions] = useState([]);
+  const [showtime, setShowtimes] = useState(null);
+  const { movieId } = useParams();
 
-	useEffect(() => {
-		const requisicao = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies/${idMovie}/showtimes`);
+  useEffect(() => {
+    getShowtimes(movieId)
+      .then(res => {
+        setShowtimes(res.data)
+      })
+  }, [movieId])
+  
+  return (
+    <>
+      <PageTitle>
+        Selecione o horário
+      </PageTitle>
 
-		requisicao.then(resposta => {
-			setSessions(resposta.data.days);
-		});
-	}, []);
+      <DayList>
+        {
+          showtime ?
+          showtime.days.map(d => (
+            <Day day={d} />
+          ))
+          :
+          ''
+        }
+      </DayList>
 
-    console.log(sessions);
-
-    return (
-        <div class="container">
-            <h2>Selecione o horário</h2>
-            <div class="sessions">
-                {sessions.map(({weekday,date,showtimes}) => (weekday ? (<div className="daySessions">
-                                <p>{weekday} - {date}</p><div className="hours">
-                                    {showtimes.map(({name, id}) =>  
-                                        <button><Link to={`/sessao/${id}`}>{name}</Link>
-                                        </button>
-                                         )}
-                                         </div>
-                            </div>
-                        ) : (
-                            "Carregando Sessoes"
-                        )))}
-            </div>
-        </div>
-    )
+      
+    </>
+  );
 }
+
+const DayList = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 0 23px;
+    margin-bottom: 117px;
+`
