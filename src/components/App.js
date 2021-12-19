@@ -1,10 +1,11 @@
 import Navbar from "./Navbar";
-import Movies from "./Movies/Movies";
-import Showtimes from "./Showtimes/Showtimes";
-import Seats from "./Seats/Seats";
-import Success from "./Success/Success";
+import Movies from "./pages/MoviesPage/Movies";
+import Showtimes from "./pages/ShowtimesPage/Showtimes";
+import Seats from "./pages/SeatsPage/Seats";
+import Success from "./pages/SucessPage/Sucess";
 import { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import styled from "styled-components";
 
 export default function App() {
 
@@ -13,7 +14,7 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <div className="page">
+      <PageView>
 
         <BrowserRouter>
           <Switch>
@@ -32,7 +33,11 @@ export default function App() {
           </Switch>
         </BrowserRouter>
         
-      </div>
+      </PageView>
     </>
   );
 }
+
+const PageView = styled.div`
+	margin-top: 67px;
+`

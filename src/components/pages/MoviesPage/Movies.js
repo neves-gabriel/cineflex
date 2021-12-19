@@ -1,10 +1,9 @@
-import './MovieList.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
 
-export default function MovieList() {
+export default function Movies() {
 
     const [movies, setMovies] = useState([]);
 
