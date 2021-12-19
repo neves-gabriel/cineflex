@@ -21,6 +21,9 @@ const ShowtimeContainer = styled.div`
     justify-content: center;
     align-items: center;
     color: #fff;
-    margin-right: 8px;
+    font-size: 18px;
+    margin-right: 10px;
     cursor: pointer;
+    border:none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `

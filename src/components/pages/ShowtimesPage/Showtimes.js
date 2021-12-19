@@ -20,6 +20,7 @@ export default function Showtimes() {
   
   return (
     <>
+
       <PageTitle>
         Selecione o horário
       </PageTitle>
@@ -34,8 +35,9 @@ export default function Showtimes() {
           ''
         }
       </DayList>
-
       
+      {showtime ? <Footer showtime={showtime}/> : null}
+    
     </>
   );
 }
