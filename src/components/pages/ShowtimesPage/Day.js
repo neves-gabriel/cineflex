@@ -13,7 +13,7 @@ export default function Day({ day }) {
       <ShowtimeList>
         {
           day.showtimes.map(s => (
-            <Showtime showtime={s} />
+            <Showtime showtime={s} key={s.id} />
           ))
         }
       </ShowtimeList>

@@ -6,7 +6,7 @@ export default function Movie({ movie }) {
   return (
     <Link to={`/filme/${movie.id}`}>
         <MovieContainer>
-          <img src={movie.posterURL} />
+          <img src={movie.posterURL} alt={movie.id} />
         </MovieContainer>
     </Link>
   );

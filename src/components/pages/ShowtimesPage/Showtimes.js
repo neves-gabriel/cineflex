@@ -29,7 +29,7 @@ export default function Showtimes() {
         {
           showtime ?
           showtime.days.map(d => (
-            <Day day={d} />
+            <Day day={d} key={d.date} />
           ))
           :
           ''

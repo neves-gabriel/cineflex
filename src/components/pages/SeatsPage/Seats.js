@@ -107,7 +107,7 @@ export default function Seats({ setReservation }) {
       <SeatList>
         {showtime ?
           showtime.seats.map(s => (
-            <Seat isAvailable={s.isAvailable} isSelected={selectedSeats.find((seat) => seat.id === s.id) ? true : false} onClick={() => selectSeats(s)}>
+            <Seat isAvailable={s.isAvailable} isSelected={selectedSeats.find((seat) => seat.id === s.id) ? true : false} onClick={() => selectSeats(s)} key={s.id}>
               {s.name}
             </Seat>
           ))

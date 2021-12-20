@@ -39,7 +39,7 @@ export default function Success({ reservation, setReservation }) {
         <h2>Ingressos</h2>
         {
           selectedSeats.map(s => (
-            <div>Assento {s.name}</div>
+            <div key={s.name}>Assento {s.name}</div>
           ))
         }
       </ReservationInfo>
