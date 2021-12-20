@@ -55,13 +55,46 @@ export default function Seats({ setReservation }) {
       cpf,
     }
 
-    if (name && cpf && selectedSeats.length > 0) {
+    if (name.length <= 0) {
+      alert("Insira um nome valido")
+    }
+
+    if (cpf.length <= 0 || !testCPF(body.cpf)) {
+      alert("Insira um CPF valido")
+    }
+
+    if (selectedSeats.length <= 0) {
+      alert("Selecione pelo menos um assento")
+    }
+
+    if (name && cpf && selectedSeats.length > 0 && testCPF(body.cpf)) {
       console.log(body)
       postReservation(body);
       navigate("/sucesso");
     }
 
     setReservation({ showtime, selectedSeats, name, cpf })
+  }
+
+  function testCPF(strCPF) {
+    var Soma;
+    var Resto;
+    Soma = 0;
+    if (strCPF === "00000000000") return false;
+
+    for (let i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+      if ((Resto === 10) || (Resto === 11))  Resto = 0;
+      if (Resto !== parseInt(strCPF.substring(9, 10)) ) return false;
+
+    Soma = 0;
+      for (let i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+      Resto = (Soma * 10) % 11;
+
+    if ((Resto === 10) || (Resto === 11))  Resto = 0;
+    if (Resto !== parseInt(strCPF.substring(10, 11) ) ) return false;
+    return true;
   }
 
   return (
@@ -108,7 +141,7 @@ export default function Seats({ setReservation }) {
 
           <InputGroup>
             <h1>CPF do comprador:</h1>
-            <input type="text" placeholder="Digite seu CPF..." onChange={(e) => setCpf(e.target.value)} value={cpf} />
+            <input type="text" placeholder="Digite seu CPF..." onChange={(e) => setCpf(e.target.value)} value={cpf} pattern="[0-9]{11}" maxLength={11} />
           </InputGroup>
       </FormsContainer>
 

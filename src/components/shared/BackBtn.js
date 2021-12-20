@@ -16,6 +16,10 @@ const BackBtnContainer = styled.img`
     width: 40px;
     height: 36px;
     cursor: pointer;
-    left: 20px;
-    top: 75px;
+    left: 10px;
+    top: 80px;
+    transition: transform .2s;
+    :hover {
+        transform: scale(1.1);
+    }
 `
