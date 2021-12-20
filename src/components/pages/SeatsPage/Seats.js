@@ -73,23 +73,23 @@ export default function Seats({ setReservation }) {
   }
 
   function testCPF(strCPF) {
-    var Soma;
-    var Resto;
-    Soma = 0;
+    var sum;
+    var rest;
+    sum = 0;
     if (strCPF === "00000000000") return false;
 
-    for (let i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
-    Resto = (Soma * 10) % 11;
+    for (let i=1; i<=9; i++) sum = sum + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+    rest = (sum * 10) % 11;
 
-      if ((Resto === 10) || (Resto === 11))  Resto = 0;
-      if (Resto !== parseInt(strCPF.substring(9, 10)) ) return false;
+      if ((rest === 10) || (rest === 11))  rest = 0;
+      if (rest !== parseInt(strCPF.substring(9, 10)) ) return false;
 
-    Soma = 0;
-      for (let i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
-      Resto = (Soma * 10) % 11;
+    sum = 0;
+      for (let i = 1; i <= 10; i++) sum = sum + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+      rest = (sum * 10) % 11;
 
-    if ((Resto === 10) || (Resto === 11))  Resto = 0;
-    if (Resto !== parseInt(strCPF.substring(10, 11) ) ) return false;
+    if ((rest === 10) || (rest === 11))  rest = 0;
+    if (rest !== parseInt(strCPF.substring(10, 11) ) ) return false;
     return true;
   }
 
