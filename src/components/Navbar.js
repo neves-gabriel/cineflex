@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import LOGO from "../assets/img/logo.png"
+import { useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ setReservation }) {
+
+    let navigate = useNavigate();
 
     function reloadPage() {
-        window.location.reload();
+        setReservation(null);
+        navigate("/");
     }
 
     return (

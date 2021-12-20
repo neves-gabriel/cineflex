@@ -17,7 +17,7 @@ function getSeats (showtimeId) {
     return promise;
 }
 
-function postBooking (body) {
+function postReservation (body) {
     const promise = axios.post(`${BASE_URL}/seats/book-many`, body)
     return promise;
 }
@@ -26,5 +26,5 @@ export {
     getMovies,
     getShowtimes,
     getSeats,
-    postBooking,
+    postReservation,
 }

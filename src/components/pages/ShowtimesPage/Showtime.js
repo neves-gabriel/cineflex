@@ -26,4 +26,8 @@ const ShowtimeContainer = styled.div`
     cursor: pointer;
     border:none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: transform .2s;
+    :hover {
+        transform: scale(1.1);
+    }
 `

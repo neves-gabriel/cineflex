@@ -9,23 +9,26 @@ import styled from "styled-components";
 
 export default function App() {
 
-  const [reservation, setReservation] = useState(null);
+  const [reservation, setReservation] = useState("");
 
   return (
     <>
-      <Navbar />
-      <PageView>
+      <BrowserRouter>
 
-        <BrowserRouter>
+        <Navbar setReservation={setReservation} />
+
+        <PageView>
+
           <Routes>
             <Route path="/" element={<Movies />} exact />
             <Route path="/filme/:movieId" element={<Showtimes />} exact />
             <Route path="/sessao/:showtimeId" element={<Seats setReservation={setReservation}/>} exact />
             <Route path="/sucesso" element={<Success reservation={reservation} setReservation={setReservation}/>} exact />
           </Routes>
-        </BrowserRouter>
-        
-      </PageView>
+          
+        </PageView>
+
+      </BrowserRouter>
     </>
   );
 }
