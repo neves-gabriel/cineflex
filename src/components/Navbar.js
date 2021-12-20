@@ -30,6 +30,7 @@ const NavbarContainer = styled.div`
     left: 0;
     width: 100%;
     height: 67px;
+    z-index: 2;
     background-color: #C3CFD9;
     display: flex;
     justify-content: center;
