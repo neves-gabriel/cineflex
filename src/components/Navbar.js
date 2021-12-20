@@ -1,20 +1,26 @@
 import styled from "styled-components";
 import LOGO from "../assets/img/logo.png"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import BackBtn from "./shared/BackBtn";
 
 export default function Navbar({ setReservation }) {
 
     let navigate = useNavigate();
+    let location = useLocation();
 
     function reloadPage() {
         setReservation(null);
         navigate("/");
     }
 
-    return (
-      <NavbarContainer>
-        <img src={LOGO} alt="logo" onClick={reloadPage}/>
-      </NavbarContainer>
+    return ( 
+      <>
+        <NavbarContainer>
+          <img src={LOGO} alt="logo" onClick={reloadPage}/>
+        </NavbarContainer>
+        {location.pathname === "/" ? null : location.pathname === "/sucesso" ? null : <BackBtn />}
+      </>
+      
     );
 }
 
