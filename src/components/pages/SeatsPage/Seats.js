@@ -2,9 +2,8 @@ import Footer from "../../Footer";
 import { getSeats, postReservation } from "../../../services/cineflex";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import { PageTitle } from "../../shared/styledcomponents";
+import { Loading, PageTitle, LargeBtn} from "../../shared/styledcomponents";
 import styled from "styled-components";
-import { LargeBtn } from "../../shared/styledcomponents";
 
 export default function Seats({ setReservation }) {
 
@@ -18,14 +17,13 @@ export default function Seats({ setReservation }) {
   useEffect(() => {
     getSeats(showtimeId)
       .then(res => {
-        console.log(res.data)
         setShowtime(res.data)
       })
   }, [showtimeId]);
 
-  useEffect(() => {
-    console.log(selectedSeats)
-  }, [selectedSeats]);
+  if ( showtime === null ){
+    return (<Loading />)
+  }
 
   function selectSeats (seat) {
 
@@ -44,7 +42,6 @@ export default function Seats({ setReservation }) {
     } else {
       setSelectedSeats([...selectedSeats, seat])
     }
-
   }
 
   function sendReservation () {
@@ -68,7 +65,6 @@ export default function Seats({ setReservation }) {
     }
 
     if (name && cpf && selectedSeats.length > 0 && testCPF(body.cpf)) {
-      console.log(body)
       postReservation(body);
       navigate("/sucesso");
     }

@@ -2,7 +2,7 @@ import Movie from "./Movie";
 import { getMovies } from "../../../services/cineflex";
 import { useState, useEffect } from 'react';
 import styled from "styled-components";
-import { PageTitle } from "../../shared/styledcomponents";
+import { Loading, PageTitle } from "../../shared/styledcomponents";
 
 export default function Movies() {
 
@@ -12,6 +12,10 @@ export default function Movies() {
     getMovies()
       .then(res => setMovies(res.data))
   }, [])
+
+  if (movies.length <= 0 ){
+    return (<Loading />)
+  }
 
   return (
     <>

@@ -3,7 +3,7 @@ import Footer from "../../Footer";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { getShowtimes  } from "../../../services/cineflex";
-import { PageTitle } from "../../shared/styledcomponents";
+import { Loading, PageTitle } from "../../shared/styledcomponents";
 import styled from "styled-components";
 
 export default function Showtimes() {
@@ -17,10 +17,13 @@ export default function Showtimes() {
         setShowtimes(res.data)
       })
   }, [movieId])
+
+  if ( showtime === null ){
+    return (<Loading />)
+  }
   
   return (
     <>
-
       <PageTitle>
         Selecione o horário
       </PageTitle>

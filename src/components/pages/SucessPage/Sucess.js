@@ -10,8 +10,7 @@ export default function Success({ reservation, setReservation }) {
         navigate("/");
     }
 
-    const {
-        cpf,
+    const {cpf,
         name,
         selectedSeats,
         showtime,
@@ -37,8 +36,7 @@ export default function Success({ reservation, setReservation }) {
 
       <ReservationInfo>
         <h2>Ingressos</h2>
-        {
-          selectedSeats.map(s => (
+        {selectedSeats.map(s => (
             <div key={s.name}>Assento {s.name}</div>
           ))
         }

@@ -1,4 +1,16 @@
 import styled from "styled-components";
+import LOADING_GIF from "../../assets/gif/loading.gif";
+
+const Loading = styled.img.attrs({
+    src: `${LOADING_GIF}`
+    })`
+    display: block; 
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    margin: 30vh auto 0 auto;
+    border: none;
+`
 
 const PageTitle = styled.h1`
     font-size: 24px;
@@ -34,6 +46,7 @@ const LargeBtn = styled.button`
 `
 
 export {
+    Loading,
     PageTitle,
     PageTitleSucess,
     LargeBtn
