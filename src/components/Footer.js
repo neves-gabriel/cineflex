@@ -6,7 +6,7 @@ export default function Footer({ showtime, weekday, name }) {
       <FooterContainer>
 
         <FooterPoster>
-          <img src={showtime.posterURL} />
+          <img src={showtime.posterURL} alt="poster"/>
         </FooterPoster>
   
         <FooterInfo>
